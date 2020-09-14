@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/guessNum" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Guess Number"
+        android:id="@+id/guessText"/>
+    <Button
+        android:id="@+id/toastBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toast" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton android:id="@+id/dol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eu->Dol" />
+        <RadioButton android:id="@+id/eu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dol->Eu" />
+    </RadioGroup>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dollar"
+        android:id="@+id/dollar"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Euro"
+        android:id="@+id/eur"/>
+
+    <Button
+        android:id="@+id/convertMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Convert Money" />
+
+</LinearLayout>
