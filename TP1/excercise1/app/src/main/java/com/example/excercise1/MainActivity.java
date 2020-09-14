@@ -1,7 +1,6 @@
 package com.example.excercise1;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnToast = (Button) findViewById(R.id.toastBtn);
         btnToast.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                int count = 0;
                 final TextView guessTextView = (TextView) findViewById(R.id.guessNum);
                 guessTextView.setText(String.valueOf(random));
                 guessTextView.setVisibility(View.GONE);
@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 int guess = Integer.parseInt(guessText.getText().toString());
                 System.out.println(guess);
                 actionGuess(guess);
+                count++;
+                String toast = "count: " + String.valueOf(count);
+                Toast.makeText(MainActivity.this, toast, Toast.LENGTH_SHORT).show();
+
             }
         });
 
