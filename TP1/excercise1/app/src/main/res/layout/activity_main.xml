@@ -27,7 +27,8 @@
         <RadioButton android:id="@+id/dol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eu->Dol" />
+            android:text="Eu->Dol"
+            android:checked="true"/>
         <RadioButton android:id="@+id/eu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,6 +51,7 @@
         android:id="@+id/convertMoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Convert Money" />
+        android:text="Convert Money"
+        android:onClick="convert"/>
 
 </LinearLayout>
