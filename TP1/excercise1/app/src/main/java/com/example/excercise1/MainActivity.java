@@ -13,13 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    final int min = 0;
+    private final int min = 0;
     final int max = 100;
     final int random = new Random().nextInt((max - min) + 1) + min;
     RadioGroup radioGroup;
     RadioButton radioButton;
     EditText eurMoney;
 
+    private int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println(random);
@@ -28,30 +29,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText guessText = (EditText) findViewById(R.id.guessText);
 
         final EditText dollarMoney = (EditText) findViewById(R.id.dollar);
         eurMoney = (EditText) findViewById(R.id.eur);
 
         radioGroup = (RadioGroup) findViewById(R.id.radio);
 
-        Button btnToast = (Button) findViewById(R.id.toastBtn);
-        btnToast.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                int count = 0;
-                final TextView guessTextView = (TextView) findViewById(R.id.guessNum);
-                guessTextView.setText(String.valueOf(random));
-                guessTextView.setVisibility(View.GONE);
-
-                int guess = Integer.parseInt(guessText.getText().toString());
-                System.out.println(guess);
-                actionGuess(guess);
-                count++;
-                String toast = "count: " + String.valueOf(count);
-                Toast.makeText(MainActivity.this, toast, Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        this.count = 0;
 
         Button btnConvert = (Button) findViewById(R.id.convertMoney);
         btnConvert.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +64,22 @@ public class MainActivity extends AppCompatActivity {
                         radioButton.getText(), Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+
+    public void play(View view){
+        //final TextView guessTextView = (TextView) findViewById(R.id.guessNum);
+        //guessTextView.setText(String.valueOf(random));
+        //guessTextView.setVisibility(View.GONE);
+
+        final EditText guessText = (EditText) findViewById(R.id.guessText);
+        int guess = Integer.parseInt(guessText.getText().toString());
+//        System.out.println(guess);
+        actionGuess(guess);
+        count++;
+        String toast = "count: " + String.valueOf(count);
+        Toast.makeText(MainActivity.this, toast, Toast.LENGTH_SHORT).show();
 
     }
 

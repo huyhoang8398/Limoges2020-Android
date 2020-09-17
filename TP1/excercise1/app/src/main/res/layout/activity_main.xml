@@ -16,7 +16,8 @@
         android:id="@+id/toastBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Toast" />
+        android:text="Toast"
+        android:onClick="play"/>
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/radio"
