@@ -1,13 +1,12 @@
 package com.example.excersise2;
-import java.util.*;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 public class EncryptActivity extends AppCompatActivity {
     @Override
@@ -16,17 +15,28 @@ public class EncryptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_encrypt);
     }
 
-    public void encryptCaesar(View view) throws JSONException {
+    public void encrypt(View view) {
         final EditText encryptText = (EditText) findViewById(R.id.encryptText);
-        String textToEncrypt = encryptText.getText().toString();
-        JSONArray jsonArray = new JSONArray(textToEncrypt);
-        String[] strArr = new String[jsonArray.length()];
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            strArr[i] = jsonArray.getString(i);
+        String text = encryptText.getText().toString();
+        StringBuilder result = new StringBuilder();
+        if (text.isEmpty()) {
+            Toast.makeText(this, "You need to enter text to encrypt", Toast.LENGTH_SHORT).show();
         }
-
-        System.out.println(Arrays.toString(strArr));
+        else {
+            for (char character : text.toCharArray()) {
+                if (character != ' ') {
+                    character = Character.toLowerCase(character);
+                    int originalAlphabetPosition = character - 'a';
+                    int newAlphabetPosition = (originalAlphabetPosition + 3) % 26;
+                    char newCharacter = (char) ('a' + newAlphabetPosition);
+                    result.append(newCharacter);
+                } else {
+                    result.append(character);
+                }
+            }
+            Intent intent = new Intent(EncryptActivity.this, ResultEncryptActivity.class);
+            intent.putExtra("result", result.toString());
+            startActivity(intent);
+        }
     }
-
 }

@@ -11,6 +11,6 @@
         android:id="@+id/encryptTextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="encryptCaesar"
-        android:text="Start Encrypt" />
+        android:onClick="encrypt"
+        android:text="Start Encrypt"/>
 </LinearLayout>
