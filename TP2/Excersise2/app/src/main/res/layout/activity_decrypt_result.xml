@@ -2,15 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <EditText
+
+
+    <TextView
+        android:id="@+id/resultDecrypt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter String to decrypt"
-        android:id="@+id/decryptText"/>
-    <Button
-        android:id="@+id/decryptTextButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Decrypt"
-        android:onClick="decrypt"/>
+        android:text="result" />
 </LinearLayout>
