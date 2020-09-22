@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class DecryptActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +27,15 @@ public class DecryptActivity extends AppCompatActivity {
         final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.decryptRadioGroup);
         int selectedId = radioGroup.getCheckedRadioButtonId();
         final RadioButton radioButton = (RadioButton) findViewById(selectedId);
+        final EditText decryptFile = (EditText) findViewById(R.id.decryptFile);
 
-
+        String file = decryptFile.getText().toString();
         String text = decryptText.getText().toString();
         String key = decryptKey.getText().toString();
-        if (text.isEmpty()) {
+
+        if (text.isEmpty() && file.isEmpty()) {
             Toast.makeText(this, "You need to enter text to decrypt", Toast.LENGTH_SHORT).show();
-        } else {
+        } else if (file.isEmpty()){
             if (radioButton.getText().equals("Caesar Cipher Decrypt")) {
                 if (TextUtils.isEmpty(decryptKey.getText().toString())) {
                     Toast.makeText(this, "You need to enter the key", Toast.LENGTH_SHORT).show();
@@ -48,6 +54,45 @@ public class DecryptActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+        } else {
+            InputStream ins = getResources().openRawResource(
+                    getResources().getIdentifier(file,
+                            "raw", getPackageName()));
+            String sxml = readTextFile(ins);
+            if (radioButton.getText().equals("Caesar Cipher Decrypt")) {
+                if (TextUtils.isEmpty(decryptKey.getText().toString())) {
+                    Toast.makeText(this, "You need to enter the key", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(DecryptActivity.this, ResultDecryptActivity.class);
+                    intent.putExtra("param", new Parameter(sxml, key, "decrypt", "caesar"));
+                    startActivity(intent);
+                }
+            }
+            if (radioButton.getText().equals("Vigenere Cipher Decrypt")) {
+                if (TextUtils.isEmpty(decryptKey.getText().toString())) {
+                    Toast.makeText(this, "You need to enter the key", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(DecryptActivity.this, ResultDecryptActivity.class);
+                    intent.putExtra("param", new Parameter(sxml, key, "decrypt", "vigenere"));
+                    startActivity(intent);
+                }
+            }
         }
+    }
+    public String readTextFile(InputStream inputStream) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        byte buf[] = new byte[1024];
+        int len;
+        try {
+            while ((len = inputStream.read(buf)) != -1) {
+                outputStream.write(buf, 0, len);
+            }
+            outputStream.close();
+            inputStream.close();
+        } catch (IOException e) {
+
+        }
+        return outputStream.toString();
     }
 }
