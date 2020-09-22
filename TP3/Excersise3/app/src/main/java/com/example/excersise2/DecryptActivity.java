@@ -13,6 +13,8 @@ public class DecryptActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decrypt);
     }
+
+
     public void decrypt(View view) {
         final EditText decryptText = (EditText) findViewById(R.id.decryptText);
         String text = decryptText.getText().toString();

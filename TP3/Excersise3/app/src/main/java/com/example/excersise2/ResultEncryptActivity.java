@@ -1,5 +1,5 @@
 package com.example.excersise2;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -12,17 +12,16 @@ public class ResultEncryptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_encrypt_result);
 
         Bundle data = getIntent().getExtras();
+        assert data != null;
         Parameter parameter = (Parameter) data.getParcelable("param");
 
-
+        assert parameter != null;
         if (parameter.getAlgo().equals("caesar")) {
             caesar(parameter.getPlainText(), Integer.parseInt(parameter.getKey()));
-        }
-        else {
+        } else {
             vigenere(parameter.getPlainText(), parameter.getKey());
         }
     }
-
 
     public void vigenere(String text, String key) {
         final TextView resultTextView = (TextView) findViewById(R.id.resultEncrypt);
