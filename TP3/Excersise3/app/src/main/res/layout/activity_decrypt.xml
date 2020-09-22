@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chose your encrypt method" />
+        android:text="Chose your decrypt method" />
     <RadioGroup
         android:id="@+id/decryptRadioGroup"
         android:layout_width="match_parent"
@@ -14,8 +14,7 @@
         <RadioButton android:id="@+id/caesarDecrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Caesar Cipher Decrypt"
-            android:checked="true"/>
+            android:text="Caesar Cipher Decrypt" />
         <RadioButton android:id="@+id/vingeDecrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +24,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter String to encrypt"
+        android:hint="Enter filename to decrypt"
+        android:id="@+id/decryptFile"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter String to decrypt"
         android:id="@+id/decryptText"/>
     <EditText
         android:layout_width="match_parent"

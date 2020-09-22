@@ -14,8 +14,7 @@
         <RadioButton android:id="@+id/caesar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Caesar Cipher"
-            android:checked="true"/>
+            android:text="Caesar Cipher" />
         <RadioButton android:id="@+id/vinge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,10 +22,16 @@
     </RadioGroup>
 
     <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter Filename to encrypt"
+    android:id="@+id/encryptFile" />
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter String to encrypt"
-        android:id="@+id/encryptText"/>
+        android:id="@+id/encryptText" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
