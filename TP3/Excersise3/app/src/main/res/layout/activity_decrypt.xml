@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chose your decrypt method" />
+    <RadioGroup
+        android:id="@+id/decryptRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton android:id="@+id/caesarDecrypt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caesar Cipher Decrypt" />
+        <RadioButton android:id="@+id/vingeDecrypt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vigenere Cipher Decrypt" />
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter filename to decrypt"
+        android:id="@+id/decryptFile"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter String to decrypt"
+        android:id="@+id/decryptText"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Key"
+        android:id="@+id/decryptKey"/>
+    <Button
+        android:id="@+id/decryptTextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Decrypt"
+        android:onClick="decrypt"/>
+</LinearLayout>
